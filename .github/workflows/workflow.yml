@@ -1,0 +1,31 @@
+on:
+  issues
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: actions/checkout@v3
+
+      - run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          echo "ran" >> test.txt
+          git add test.txt
+          git commit -m test
+          git push
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: github-script
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data } = await github.rest.issues.listLabelsOnIssue({
+              issue_number: 1,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
