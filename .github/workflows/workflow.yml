@@ -4,7 +4,9 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    steps:      
+    steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      
       - uses: actions/checkout@v3
 
       - run: |
@@ -18,6 +20,8 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      
       - uses: actions/checkout@v3
 
       - name: github-script
