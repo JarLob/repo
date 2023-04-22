@@ -1,5 +1,5 @@
 on:
-  issues
+  push
 
 jobs:
   job1:
