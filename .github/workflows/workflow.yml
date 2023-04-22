@@ -3,10 +3,10 @@ on:
 
 jobs:
   job1:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
-    steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
-      
+    steps:      
       - uses: actions/checkout@v3
 
       - run: |
@@ -18,10 +18,10 @@ jobs:
           git push
 
   job2:
+    permissions:
+      issues: read
     runs-on: ubuntu-latest
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
-      
       - uses: actions/checkout@v3
 
       - name: github-script
